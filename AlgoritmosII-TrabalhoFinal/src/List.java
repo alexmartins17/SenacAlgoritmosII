@@ -75,7 +75,7 @@ public class List {
 		}
 	}
 	
-	public void removeLast(){
+	public void removeLast(){ 
 		if(this.tail == null){
 			System.out.println("Lista vazia!");
 		}else{
@@ -91,10 +91,22 @@ public class List {
 	}
 	
 	public void remove(Node aux){
-		aux.getPrevious().setNext(aux.getNext());
-		aux.getNext().setPrevious(aux.getPrevious());
-		aux.setNext(null);
-		aux.setPrevious(null);
+		if(aux.getPrevious() == null){
+			this.head = aux.getNext();
+			this.head.setPrevious(null);
+			aux.setNext(null);
+		}else{
+			if(aux.getNext() == null){
+				this.tail = aux.getPrevious();
+				this.tail.setNext(null);
+				aux.setPrevious(null);
+			}else{
+				aux.getPrevious().setNext(aux.getNext());
+				aux.getNext().setPrevious(aux.getPrevious());
+				aux.setNext(null);
+				aux.setPrevious(null);
+			}
+		}
 	}
 	
 	public void printList(){

@@ -19,6 +19,7 @@ public class Test {
 		while( aux != null){
 			if(aux.getData() == 2){
 				l.addBefore(aux, 7);
+				break;
 			}
 			aux = aux.getNext();
 		}
@@ -27,6 +28,7 @@ public class Test {
 		while( aux != null){
 			if(aux.getData() == 2){
 				l.addAfter(aux, 7);
+				break;
 			}
 			aux = aux.getNext();
 		}
@@ -37,6 +39,7 @@ public class Test {
 		while(aux != null){
 			if(aux.getData() == 2){
 				l.remove(aux);
+				break;
 			}
 			aux = aux.getNext();
 		}
