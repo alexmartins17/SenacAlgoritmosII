@@ -20,7 +20,7 @@ public class List {
 		this.tail = tail;
 	}
 
-	public void addFirst(int data){
+	private void addFirst(String data){
 		Node novo = new Node(data);
 		if(this.head == null){
 			this.head = novo;
@@ -32,7 +32,7 @@ public class List {
 		}
 	}
 	
-	public void append(int data){
+	private void append(String data){
 		Node novo = new Node(data);
 		if(this.tail == null){
 			this.tail = novo;
@@ -44,7 +44,7 @@ public class List {
 		}
 	}
 	
-	public void addAfter(Node aux, int data){
+	private void addAfter(Node aux, String data){
 		Node novo = new Node(data);
 		novo.setNext(aux.getNext());
 		novo.setPrevious(aux);
@@ -52,7 +52,7 @@ public class List {
 		aux.setNext(novo);
 	}
 	
-	public void addBefore(Node aux, int data){
+	private void addBefore(Node aux, String data){
 		Node novo = new Node(data);
 		novo.setPrevious(aux.getPrevious());
 		novo.setNext(aux);
@@ -111,10 +111,49 @@ public class List {
 	
 	public void printList(){
 		Node aux = this.head;
+		System.out.println("");
 		while(aux != null){
 			System.out.println(aux.getData());
 			aux = aux.getNext();
 		}
+		System.out.println("");
 	}
-
+	
+	//Métodos para lista indexada
+	
+	public void addOrdenado(String data){
+		Node novo = new Node(data);
+		Node aux = this.head;
+		if(this.head == null){
+			this.head = novo;
+			this.tail = novo;
+		}else{
+			while(aux != null){
+				if(data.compareTo(aux.getData()) <= 0){
+					if(aux.getPrevious() == null){
+						novo.setNext(aux);
+						aux.setPrevious(novo);
+						this.head = novo;
+					}else{
+						novo.setNext(aux);
+						novo.setPrevious(aux.getPrevious());
+						aux.getPrevious().setNext(novo);
+						aux.setPrevious(novo);
+					}//FimSe Nó será inserido no início da lista ou no meio
+					break;
+				}else{
+					if(aux.getNext() == null){
+						novo.setPrevious(aux);
+						aux.setNext(novo);
+						this.tail = novo;
+						break;
+					}
+				}//FimSe comparação é menor/igual ou maior
+					aux = aux.getNext();	
+			}//FimWhile
+		}//FimSe lista está vazia ou não
+		
+	}
+	
+	
 }

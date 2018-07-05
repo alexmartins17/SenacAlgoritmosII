@@ -1,20 +1,29 @@
 
 public class Node {
 
-	private int data;
+	private String data;
 	private Node next;
 	private Node previous;
+	private Node index;
 	
-	public Node(int data){
+	
+	public Node(String data){
 		this.data = data;
 		this.next = null;
 		this.previous = null;
 	}
 	
-	public int getData() {
+	public Node getIndex(){
+		return index;
+	}
+	public void setIndex(Node index){
+		this.index = index;
+	}
+	
+	public String getData() {
 		return data;
 	}
-	public void setData(int data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 	public Node getNext() {
