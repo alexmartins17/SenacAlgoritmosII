@@ -155,5 +155,105 @@ public class List {
 		
 	}
 	
+	public void defineIndice(Node no){
+		no.setIndex(no.getNext());
+		for(int i = 0; i < 4; i++){
+			no.setIndex(no.getIndex().getNext());
+		}
+	}
 	
+	
+	public void buscaComIndice(String data){
+		Node aux = this.head;
+		this.defineIndice(aux);
+		while (false != true){
+			if(data.compareTo(aux.getData()) == 0 ){
+				System.out.println("Elemento da consulta: " + aux.getData());
+				break;
+			}
+			if(data.compareTo(aux.getData()) > 0){
+				System.out.println("Elemento do indice avanço: " + aux.getData());
+				aux = aux.getIndex();
+				this.defineIndice(aux);
+			}
+			if(data.compareTo(aux.getData()) < 0){
+				System.out.println("Elemento do indice avanço: " + aux.getData());
+				aux = aux.getPrevious();
+				while(false != true){
+					if(data.compareTo(aux.getData()) == 0){
+						System.out.println("Elemento da consulta: " + aux.getData());
+						break;
+					}
+					if(data.compareTo(aux.getData()) > 0){
+						System.out.println("Elemento não existe");
+						break;
+					}
+					if(data.compareTo(aux.getData()) < 0){
+						System.out.println("Elemento do indice retorno: " + aux.getData());
+						aux = aux.getPrevious();
+					}	
+				}
+				break;
+			}
+			if(aux.getIndex() == null){
+				//
+				if(data.compareTo(aux.getData()) == 0 ){
+					System.out.println("Elemento da consulta: " + aux.getData());
+					break;
+				}
+				if(data.compareTo(aux.getData()) < 0){
+					System.out.println("Elemento do indice avanço: " + aux.getData());
+					aux = aux.getPrevious();
+					while(false != true){
+						if(data.compareTo(aux.getData()) == 0){
+							System.out.println("Elemento da consulta: " + aux.getData());
+							break;
+						}
+						if(data.compareTo(aux.getData()) > 0){
+							System.out.println("Elemento não existe");
+							break;
+						}
+						if(data.compareTo(aux.getData()) < 0){
+							System.out.println("Elemento do indice retorno: " + aux.getData());
+							aux = aux.getPrevious();
+						}	
+					}
+				}
+				if(data.compareTo(aux.getData()) > 0){
+					System.out.println("Elemento do indice avanço: " + aux.getData());
+					aux = this.tail;
+					System.out.println("Ultimo elemento da lista: " + aux.getData());
+					
+					if(data.compareTo(aux.getData()) == 0 ){
+						System.out.println("Elemento da consulta: " + aux.getData());
+						break;
+					}
+					if(data.compareTo(aux.getData()) < 0){
+						System.out.println("Elemento do indice avanço: " + aux.getData());
+						aux = aux.getPrevious();
+						while(false != true){
+							if(data.compareTo(aux.getData()) == 0){
+								System.out.println("Elemento da consulta: " + aux.getData());
+								break;
+							}
+							if(data.compareTo(aux.getData()) > 0){
+								System.out.println("Elemento não existe");
+								break;
+							}
+							if(data.compareTo(aux.getData()) < 0){
+								System.out.println("Elemento do indice retorno: " + aux.getData());
+								aux = aux.getPrevious();
+							}	
+						}
+						break;
+					}
+					if(data.compareTo(aux.getData()) > 0){
+						System.out.println("Elemento não existe");
+						break;
+					}
+				}
+			}
+		}
+	}
+				//
 }

@@ -50,7 +50,7 @@ public class Test {
 		
 		List l = new List();
 		
-		l.addOrdenado("G");
+	/*	l.addOrdenado("G");
 		l.addOrdenado("A");
 		l.addOrdenado("C");
 		l.addOrdenado("B");
@@ -59,7 +59,13 @@ public class Test {
 		l.addOrdenado("E");
 		
 		l.printList();
+	*/
 		
+		for(int i = 1; i <= 100; i++){
+			l.addOrdenado("" + i);
+		}
+		l.printList();
+		l.buscaComIndice("58");
 	}
 
 }
